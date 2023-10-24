@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Продажа автомобиля</title>
+    <link rel="stylesheet" th:href="@{/css/sell_car.css}">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <a class="header-logo-link" href="#">CarSale</a>
+            </div>
+            <a class="close-ref" href="#">Закрыть</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sell-car-header">
+            Укажите информацию о своём автомобиле для продажи
+        </div>
+        <form method="POST" th:action="@{/cars/sell}">
+            <div class="params-form">
+                <div class="car-params">
+                    <div class="text-field text-field_floating" id="brand-input">
+                        <input class="text-field__input" type="text" id="brand" placeholder="Марка"
+                               th:value="${car.brand}" th:name="brand"/>
+                        <label class="text-field__label" for="brand">Марка</label>
+                        <p th:if="${#fields.hasErrors('car.brand')}"
+                           th:errorclass="validationError"
+                           th:errors="*{car.brand}">
+                        </p>
+                    </div>
+                    <div class="text-field text-field_floating" id="model-input">
+                        <input class="text-field__input" type="text" id="model" placeholder="Модель"
+                               th:value="${car.model}" th:name="model"/>
+                        <label class="text-field__label" for="model">Модель</label>
+                        <p th:if="${#fields.hasErrors('car.model')}"
+                           th:errorclass="validationError"
+                           th:errors="*{car.model}">
+                        </p>
+                    </div>
+                    <div class="tech-params">
+                        <h2 class="h2-specifications">Характеристики</h2>
+                        <div class="text-field text-field_floating" id="release-year-input">
+                            <input class="text-field__input" type="text" id="release-year" placeholder="Год выпуска"
+                                   th:value="${car.releaseYear}" th:name="year"/>
+                            <label class="text-field__label" for="release-year">Год выпуска</label>
+                            <p th:if="${#fields.hasErrors('car.releaseYear')}"
+                               th:errorclass="validationError"
+                               th:errors="*{car.releaseYear}">
+                            </p>
+                        </div>
+                        <div class="type-section">
+                            <div class="type-section-content">
+                                <label class="type_label">Кузов</label>
+                                <div class="custom-select">
+                                    <select th:field="*{car.bodyType}">
+                                        <option th:each="bodyType : ${T(ru.carsalon.entity.enums.BodyType).values()}"
+                                                th:value="${bodyType}"
+                                                th:text="${bodyType.title}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="type-section-content">
+                                <label class="type_label">Двигатель</label>
+                                <div class="custom-select">
+                                    <select th:field="*{car.engineType}">
+                                        <option th:each="engineType : ${T(ru.carsalon.entity.enums.EngineType).values()}"
+                                                th:value="${engineType}"
+                                                th:text="${engineType.title}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="type-section-content">
+                                <label class="type_label">Привод</label>
+                                <div class="custom-select">
+                                    <select th:field="*{car.driveType}">
+                                        <option th:each="driveType : ${T(ru.carsalon.entity.enums.DriveType).values()}"
+                                                th:value="${driveType}"
+                                                th:text="${driveType.title}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="type-section-content">
+                                <label class="type_label">Коробка передач</label>
+                                <div class="custom-select">
+                                    <select th:field="*{car.transmissionType}">
+                                        <option th:each="transmissionType : ${T(ru.carsalon.entity.enums.TransmissionType).values()}"
+                                                th:value="${transmissionType}"
+                                                th:text="${transmissionType.title}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-field text-field_floating" id="color-input">
+                            <input class="text-field__input" type="text" id="color" placeholder="Цвет"
+                                   th:value="${car.color}" th:name="color"/>
+                            <label class="text-field__label" for="color">Цвет</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="params-form">
+                <div class="params">
+                    <h2 class="h2-mileage">Пробег</h2>
+                    <div class="text-field text-field_floating" id="mileage-input">
+                        <input class="text-field__input" type="text" id="mileage" placeholder="км"
+                               th:value="${car.mileage}" th:name="mileage"/>
+                        <label class="text-field__label" for="mileage">км</label>
+                        <p th:if="${#fields.hasErrors('car.mileage')}"
+                           th:errorclass="validationError"
+                           th:errors="*{car.mileage}">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="params-form">
+                <div class="params">
+                    <h2 class="h2-mileage">Цена</h2>
+                    <div class="text-field text-field_floating" id="price-input">
+                        <input class="text-field__input" type="text" id="price" placeholder="км"
+                               th:value="${car.price}" th:name="price"/>
+                        <label class="text-field__label" for="price">₽</label>
+                        <p th:if="${#fields.hasErrors('car.price')}"
+                           th:errorclass="validationError"
+                           th:errors="*{car.price}">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="params-form">
+                <div class="tech-params">
+                    <h2 class="h2-mileage">Контакты</h2>
+                    <div class="text-field text-field_floating" id="name-input">
+                        <input class="text-field__input" type="text" id="name" placeholder="ФИО"
+                               th:value="${trader.name}" th:name="name"/>
+                        <label class="text-field__label" for="mileage">ФИО</label>
+                        <p th:if="${#fields.hasErrors('trader.name')}"
+                           th:errorclass="validationError"
+                           th:errors="*{trader.name}">
+                        </p>
+                    </div>
+                    <div class="text-field text-field_floating" id="email-input">
+                        <input class="text-field__input" type="email" id="email" placeholder="Электронная почта (e-mail)"
+                               th:value="${trader.email}" th:name="email"/>
+                        <label class="text-field__label" for="mileage">Электронная почта (e-mail)</label>
+                        <p th:if="${#fields.hasErrors('trader.email')}"
+                           th:errorclass="validationError"
+                           th:errors="*{trader.email}">
+                        </p>
+                    </div>
+                    <div class="text-field text-field_floating" id="phone-number-input">
+                        <input class="text-field__input" type="text" id="phone-number" placeholder="Номер телефона"
+                               th:value="${trader.phoneNumber}" th:name="phoneNumber"/>
+                        <label class="text-field__label" for="mileage">Номер телефона</label>
+                        <p th:if="${#fields.hasErrors('trader.phoneNumber')}"
+                           th:errorclass="validationError"
+                           th:errors="*{trader.phoneNumber}">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <input class="button" type="submit" value="Опубликовать объявление"/>
+        </form>
+    </div>
+</body>
+</html>
+

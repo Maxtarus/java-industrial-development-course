@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>CarSale</title>
-    <link href="/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/home_style.css}">
 </head>
 <body>
     <h1>Добро пожаловать на CarSale!</h1>
-    <img th:src="@{/images/CarSale.png}" width="1210" height="485"/>
+    <img class ="car-sale-pic" th:src="@{/images/CarSale.png}"/>
 </body>
 </html>
