@@ -3,6 +3,7 @@ package ru.carsalon.entity.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum EngineType {
     PETROL("бензин"),
@@ -10,6 +11,5 @@ public enum EngineType {
     HYBRID("бензин-дизель"),
     ELECTRO("электро");
 
-    @Getter
     private final String title;
 }

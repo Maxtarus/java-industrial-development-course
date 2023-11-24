@@ -3,6 +3,7 @@ package ru.carsalon.entity.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum BodyType {
     SEDAN("седан"),
@@ -18,6 +19,5 @@ public enum BodyType {
     LIMOUSINE("лимузин"),
     MINIBUS("микроавтобус");
 
-    @Getter
     private final String title;
 }

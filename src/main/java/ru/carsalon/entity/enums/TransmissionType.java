@@ -3,6 +3,7 @@ package ru.carsalon.entity.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum TransmissionType {
     AUTOMATIC("автоматическая"),
@@ -10,6 +11,5 @@ public enum TransmissionType {
     ROBOT("робот"),
     MANUAL("механическая");
 
-    @Getter
     private final String title;
 }

@@ -44,7 +44,7 @@
                         <h2 class="h2-specifications">Характеристики</h2>
                         <div class="text-field text-field_floating" id="release-year-input">
                             <input class="text-field__input" type="text" id="release-year" placeholder="Год выпуска"
-                                   th:value="${car.releaseYear}" th:name="year"/>
+                                   th:value="${car.releaseYear}" th:name="releaseYear"/>
                             <label class="text-field__label" for="release-year">Год выпуска</label>
                             <p th:if="${#fields.hasErrors('car.releaseYear')}"
                                th:errorclass="validationError"
@@ -101,6 +101,10 @@
                             <input class="text-field__input" type="text" id="color" placeholder="Цвет"
                                    th:value="${car.color}" th:name="color"/>
                             <label class="text-field__label" for="color">Цвет</label>
+                            <p th:if="${#fields.hasErrors('car.color')}"
+                               th:errorclass="validationError"
+                               th:errors="*{car.color}">
+                            </p>
                         </div>
                     </div>
                 </div>
