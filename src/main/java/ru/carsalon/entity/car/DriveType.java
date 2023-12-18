@@ -1,4 +1,4 @@
-package ru.carsalon.entity.enums;
+package ru.carsalon.entity.car;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

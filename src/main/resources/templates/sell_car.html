@@ -56,7 +56,7 @@
                                 <label class="type_label">Кузов</label>
                                 <div class="custom-select">
                                     <select th:field="*{car.bodyType}">
-                                        <option th:each="bodyType : ${T(ru.carsalon.entity.enums.BodyType).values()}"
+                                        <option th:each="bodyType : ${T(ru.carsalon.entity.car.BodyType).values()}"
                                                 th:value="${bodyType}"
                                                 th:text="${bodyType.title}">
                                         </option>
@@ -67,7 +67,7 @@
                                 <label class="type_label">Двигатель</label>
                                 <div class="custom-select">
                                     <select th:field="*{car.engineType}">
-                                        <option th:each="engineType : ${T(ru.carsalon.entity.enums.EngineType).values()}"
+                                        <option th:each="engineType : ${T(ru.carsalon.entity.car.EngineType).values()}"
                                                 th:value="${engineType}"
                                                 th:text="${engineType.title}">
                                         </option>
@@ -78,7 +78,7 @@
                                 <label class="type_label">Привод</label>
                                 <div class="custom-select">
                                     <select th:field="*{car.driveType}">
-                                        <option th:each="driveType : ${T(ru.carsalon.entity.enums.DriveType).values()}"
+                                        <option th:each="driveType : ${T(ru.carsalon.entity.car.DriveType).values()}"
                                                 th:value="${driveType}"
                                                 th:text="${driveType.title}">
                                         </option>
@@ -89,7 +89,7 @@
                                 <label class="type_label">Коробка передач</label>
                                 <div class="custom-select">
                                     <select th:field="*{car.transmissionType}">
-                                        <option th:each="transmissionType : ${T(ru.carsalon.entity.enums.TransmissionType).values()}"
+                                        <option th:each="transmissionType : ${T(ru.carsalon.entity.car.TransmissionType).values()}"
                                                 th:value="${transmissionType}"
                                                 th:text="${transmissionType.title}">
                                         </option>

@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/carsalondb
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  h2:
+    console.enabled: true
+  sql:
+    init:
+      encoding: utf-8
+      mode: always
+      platform: h2
+  jpa:
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
