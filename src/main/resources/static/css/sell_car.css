@@ -215,7 +215,7 @@ select {
     -webkit-appearance: none;
     width: 100%;
     font-size: 1rem;
-    padding: 0.675em 6em 0.675em 1em;
+    padding: 0.675em 1em 0.675em 1em;
     background-color: #fff;
     border: 1px solid #bdbdbd;
     border-radius: 0.25rem;
@@ -259,6 +259,11 @@ select {
     min-width: 150px;
 }
 
+.type_label-spec {
+    padding: 1rem .75rem;
+    min-width: 220px;
+}
+
 .button {
     font-family: inherit;
     position: relative;
@@ -279,3 +284,67 @@ select {
 .validationError {
     color: #f54b42;
 }
+
+.pts-type-field-header {
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+/*.pts-type-field {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    row-gap: 12px;*/
+/*    column-gap: 8px;*/
+/*}*/
+
+/*.blue-checked-button {*/
+/*    color: #000;*/
+/*    border: 1px solid #157ee180;*/
+/*    border-radius: 1000px;*/
+/*    line-height: 42px;*/
+/*    height: 44px;*/
+/*    font-family: inherit;*/
+/*    font-size: 15px;*/
+/*    -webkit-font-smoothing: antialiased;*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*    box-sizing: border-box;*/
+/*    max-width: 100%;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    cursor: pointer;*/
+/*    user-select: none;*/
+/*    text-align: center;*/
+/*    vertical-align: middle;*/
+/*    white-space: nowrap;*/
+/*    text-decoration: none;*/
+/*    -webkit-tap-highlight-color: transparent;*/
+/*    outline: 0;*/
+/*    background: white;*/
+/*}*/
+
+/*.blue-checked-button:hover {*/
+/*    background-color: #2669E7FF;*/
+/*}*/
+
+
+/*.blue-checked-button:active {*/
+/*    color: white;*/
+/*    background-color: #2669E7FF;*/
+/*}*/
+
+/*.button-content {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100%;*/
+/*}*/
+
+/*.button-text {*/
+/*    margin: 12px 16px;*/
+/*    display: inline-block;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+/*}*/
