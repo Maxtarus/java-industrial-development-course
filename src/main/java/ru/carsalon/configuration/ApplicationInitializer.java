@@ -6,22 +6,25 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import ru.carsalon.entity.RoleInfo;
+import ru.carsalon.entity.RoleType;
+import ru.carsalon.entity.UserInfo;
 import ru.carsalon.entity.car.*;
-import ru.carsalon.repository.CarRepository;
 import ru.carsalon.repository.TraderRepository;
+import ru.carsalon.repository.UserRepository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class ApplicationInitializer implements CommandLineRunner {
     private final TraderRepository traderRepository;
-//    private final CarRepository carRepository;
     private final JdbcTemplate jdbcTemplate;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
@@ -29,6 +32,26 @@ public class ApplicationInitializer implements CommandLineRunner {
         for (Car car : loadTradersCars()) {
             insertCar(car);
         }
+
+        userRepository.save(
+                new UserInfo(
+                        null,
+                        "admin",
+                        passwordEncoder.encode("admin"),
+                        null,
+                        Set.of(getInitRoleData().get(0))
+                )
+        );
+
+        userRepository.save(
+                new UserInfo(
+                        null,
+                        "max",
+                        passwordEncoder.encode("max"),
+                        null,
+                        Set.of(getInitRoleData().get(1))
+                )
+        );
     }
 
     public void insertCar(Car car) {
@@ -54,7 +77,7 @@ public class ApplicationInitializer implements CommandLineRunner {
     }
 
 
-    public List<Car> loadTradersCars() {
+    private List<Car> loadTradersCars() {
         return List.of(
             new Car(1L, traderRepository.findById(1L).orElseThrow(), "Lada", "Vesta", 2015, BodyType.SEDAN,
                     EngineType.PETROL, DriveType.FRONT, TransmissionType.MANUAL, "серый", 150_000, 200_000),
@@ -67,5 +90,12 @@ public class ApplicationInitializer implements CommandLineRunner {
             new Car(5L, traderRepository.findById(3L).orElseThrow(), "Mercedes-Benz", "AMG GT S I", 2014, BodyType.COUPE,
                     EngineType.PETROL, DriveType.REAR, TransmissionType.ROBOT, "серый", 46_000, 8_240_000)
         );
+    }
+
+    private List<RoleInfo> getInitRoleData() {
+        List<RoleInfo> roles = new ArrayList<>();
+        roles.add(new RoleInfo(1L, RoleType.ADMIN));
+        roles.add(new RoleInfo(2L, RoleType.USER));
+        return roles;
     }
 }

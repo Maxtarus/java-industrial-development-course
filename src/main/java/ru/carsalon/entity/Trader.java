@@ -32,6 +32,6 @@ public class Trader {
     @Column(name = "phone_number",  nullable = false)
     private String phoneNumber;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trader")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trader", fetch = FetchType.EAGER)
     private List<Car> cars = new ArrayList<>();
 }

@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <nav th:fragment="header" class="d-flex justify-content-center py-3 border-bottom">
+        <div class="nav nav-pills">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="/car_salon/sell" th:if="${!session.user.isAdmin()}" class="nav-link active">
+                        Продать автомобиль
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/car_salon/cars_list" class="nav-link active">
+                        Список продающихся автомобилей
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link disabled" th:if="${session.containsKey('user')}" th:text="${session.user.getUsername()}"/>
+                </li>
+                <li class="nav-item">
+                    <a href="/auth/logout" class="nav-link active" th:if="${session.containsKey('user')}">Выйти</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</html>

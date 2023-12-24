@@ -12,14 +12,14 @@
             <div class="header-logo">
                 <a class="header-logo-link" href="#">CarSale</a>
             </div>
-            <a class="close-ref" href="#">Закрыть</a>
+            <a class="close-ref" href="/car_salon/cars_list">Закрыть</a>
         </div>
     </div>
     <div class="content">
         <div class="sell-car-header">
             Укажите информацию о своём автомобиле для продажи
         </div>
-        <form method="POST" th:action="@{/cars/sell}">
+        <form method="POST" th:action="@{/car_salon/sell_car}">
             <div class="params-form">
                 <div class="car-params">
                     <div class="text-field text-field_floating" id="brand-input">
