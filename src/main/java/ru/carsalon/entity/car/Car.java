@@ -2,9 +2,7 @@ package ru.carsalon.entity.car;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 import ru.carsalon.entity.Trader;
 
@@ -20,6 +18,7 @@ public class Car {
     @Column(name = "id")
     private long id;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name="trader_id", nullable = false)
     private Trader trader;

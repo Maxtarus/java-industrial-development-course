@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link th:href="@{css/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+  <div class="d-flex justify-content-center">
+    <h3 class="fw-bold">Список продающихся автомобилей</h3>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Марка</td>
+        <td>Модель</td>
+        <td>Год выпуска</td>
+        <td>Кузов</td>
+        <td>Двигатель</td>
+        <td>Привод</td>
+        <td>Трансмиссия</td>
+        <td>Цвет</td>
+        <td>Пробег</td>
+        <td>Цена</td>
+        <td th:if="${session.user.isAdmin()}">Продавец</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="car : ${cars}">
+        <td th:text="${car.brand}"/>
+        <td th:text="${car.model}"/>
+        <td th:text="${car.releaseYear}"/>
+        <td th:text="${car.bodyType.title}"/>
+        <td th:text="${car.engineType.title}"/>
+        <td th:text="${car.driveType.title}"/>
+        <td th:text="${car.transmissionType.title}"/>
+        <td th:text="${car.color}"/>
+        <td th:text="${car.mileage}"/>
+        <td th:text="${car.price}"/>
+        <td th:if="${session.user.isAdmin()}"  th:text="${car.trader.name}"/>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
